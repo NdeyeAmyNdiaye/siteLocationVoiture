@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% form_theme registrationForm 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="container center">
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <h1>Inscription</h1>
+    {{ form_start(registrationForm , {'attr':{'class':'row card'}}) }}
+    <h3 class="m-auto mb-4 fw-3">Veuillez vous inscrire</h3>
+    <div class=" input-field col-6 offset-3 mt-3 mb-3">
+    <label class="form-label"> Prenom* </label>
+     {{ form_widget(registrationForm.firstname, {'attr': {'placeholder': 'Prenom'}}) }}
+        <span class="error">{{ form_errors(registrationForm.firstname) }}</span>
+    </div>
+    <div class="col-6 offset-3 mb-3">
+    <label class="form-label"> Nom*</label>
+     {{ form_widget(registrationForm.lastname, {'attr': {'placeholder': 'Nom'}}) }}
+        <span class="error">{{ form_errors(registrationForm.lastname) }}</span>
+    </div>
+    <div class="col-6 offset-3 mb-3">
+    <label> Numero de telephone*</label>
+     {{ form_widget(registrationForm.phone, {'attr': {'placeholder': 'Numero de telephone'}}) }}
+        <span class="error">{{ form_errors(registrationForm.phone) }}</span>
+    </div>
+    <div class=" col-6 offset-3 mb-3">
+    <label> Date de naissance*</label>
+    <div class="row">
+     <div class="col-4">
+     {{ form_widget(registrationForm.dateOfBirth.day, {'attr': {'placeholder': 'Jour'}}) }}
+     </div>
+     <div class="col-4">
+     {{ form_widget(registrationForm.dateOfBirth.month, {'attr': {'placeholder': 'Mois'}}) }}
+     </div>
+     <div class="col-4">
+     {{ form_widget(registrationForm.dateOfBirth.year, {'attr': {'placeholder': 'Année'}}) }}
+     </div>
+     </div>
+     <span class="error">{{ form_errors(registrationForm.dateOfBirth) }}</span>
+    </div>
+    <div class="col-6 offset-3 mb-3">
+    <label> Adresse electronique* </label>
+     {{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Adresse email'}}) }}
+<span class="error">{{ form_errors(registrationForm.dateOfBirth) }}</span>
+    </div>
+     <div class="col-6 offset-3 mb-3">
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe*'
+        }) }}
+        </div>
+         <div class="col-6 offset-3 mb-3">
+        {{ form_row(registrationForm.agreeTerms) }}
+        <div class="col-6 offset-3 mb-3">
+        <button type="submit" class="btn btn-primary">S'inscrire</button>
+    {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}

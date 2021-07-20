@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Entity;
-
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -22,7 +23,11 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(
+     * message = "L'adresse de courriel '{{ value }}' n'est pas valide."
+     * )
      */
+     
     private $email;
 
     /**
@@ -38,16 +43,29 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
+     * @Assert\Regex(
+     *  pattern="/^[a-zA-ZÀ-ÿ\-\ ]*$/",
+     *  message="Le prénom doit contenir uniquement des lettres"
+     * )
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Regex(
+     *  pattern="/^[a-zA-ZÀ-ÿ\-\ ]*$/",
+     *  message="Le nom doit contenir uniquement des lettres")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=10)
+     *  * @Assert\NotBlank
+     * @Assert\Regex(
+     *  pattern="/^(0)[0-9]{9}$/",
+     *  message="Un numéro de téléphone français doit commencer par 0  et avoir 10 chiffres au total"
+     * )
      */
     private $phone;
 
@@ -56,15 +74,12 @@ class User implements UserInterface
      */
     private $dateOfBirth;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isAdmin;
 
     /**
      * @ORM\OneToMany(targetEntity=Rent::class, mappedBy="user")
      */
     private $rents;
+
 
     public function __construct()
     {
@@ -200,17 +215,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getIsAdmin(): ?bool
-    {
-        return $this->isAdmin;
-    }
-
-    public function setIsAdmin(bool $isAdmin): self
-    {
-        $this->isAdmin = $isAdmin;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Rent[]
@@ -241,4 +245,5 @@ class User implements UserInterface
 
         return $this;
     }
+
 }
