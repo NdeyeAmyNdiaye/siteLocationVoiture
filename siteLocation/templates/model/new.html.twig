@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une modéle{% endblock %}
+
+{% block body %}
+<div class="container center">
+    <h1 class="text-center">Ajouter une modéle</h1>
+
+    {{ include('model/_form.html.twig') }}
+    <div class="col-6 offset-3">
+    <a href="{{ path('model_index') }}" class="btn btn-primary mt-5">Retour à liste</a>
+    </div>
+    </div>
+    
+{% endblock %}

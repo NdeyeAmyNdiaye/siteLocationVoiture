@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
 <form method="post">
@@ -9,17 +10,20 @@
     {% endif %}
 
     {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        <div class="input-field col-6 offset-3 mt-3 mb-3">
+            Tu es actuellement connecté en tant que {{ app.user.firstname ~' ' ~ app.user.lastname }}, <a href="{{ path('app_logout') }}">Deconnecte-toi</a>
         </div>
     {% endif %}
-
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
+    <div class=" card container mt-5">
+    <h3 class="h3 b-3 text-center font-weight-normal mt-5">Connectez-vous s'il vous plait</h3>
+    <div class="input-field col-5 offset-3 mt-3 mb-3">
+    <label for="inputEmail">Adresse electronique </label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
+    </div>
+    <div class="input-field col-5 offset-3 mt-3 mb-3">
+    <label for="inputPassword">Mot de passe </label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
+    </div>
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
@@ -34,9 +38,14 @@
             </label>
         </div>
     #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+    <div class="input-field col-6 offset-3 mt-3 mb-3">
+    <button class="btn btn-primary mr-4" type="submit">
+        Me connecter
     </button>
+     <a class="btn btn-warning ml-4" href="{{'register'}}"type="submit">
+       M'inscrire
+    </a>
+    </div>
 </form>
+</div>
 {% endblock %}

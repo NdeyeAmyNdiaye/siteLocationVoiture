@@ -64,9 +64,16 @@ class Cars
      */
     private $gear;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Model::class, inversedBy="car")
+     */
+    private $model;
+
+
     public function __construct()
     {
         $this->rents = new ArrayCollection();
+        $this->models = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -199,4 +206,22 @@ class Cars
 
         return $this;
     }
+
+    public function getModel(): ?Model
+    {
+        return $this->model;
+    }
+
+    public function setModel(?Model $model): self
+    {
+        $this->model = $model;
+
+        return $this;
+    }
+
+    
+
+   
+
+    
 }

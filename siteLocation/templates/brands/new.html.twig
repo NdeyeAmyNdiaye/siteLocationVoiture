@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une marque{% endblock %}
+
+{% block body %}
+<div class="container center">
+    <h1 class="text-center">Ajouter une marque</h1>
+
+    {{ include('brands/_form.html.twig') }}
+    <div class="col-6 offset-3">
+    <a href="{{ path('brands_index') }}" class="btn btn-primary mt-5">Retour à liste</a>
+    </div>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste des nombre de place {% endblock %}
+
+{% block body %}
+<a href="{{ path('seats_new') }}" class="btn btn-warning mt-3">Ajouter un nombre de siége </a>
+   <div class="container">
+    <h1>Liste des place assise</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre de place</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for seat in seats %}
+            <tr>
+                <td>{{ seat.id }}</td>
+                <td>{{ seat.seat }}</td>
+                <td>
+                <div class="row">
+                {{ include('seats/show.html.twig') }}
+                <a class="btn btn-success mr-3" data-bs-toggle="modal" data-bs-target="#afficheModal">Afficher</a>
+                    {# <a href="{{ path('brands_show', {'id': brand.id}) }}" class="btn btn-success mr-3" data-bs-toggle="modal" data-bs-target="#afficheModal">Afficher</a> #}
+                    <a href="{{ path('seats_edit', {'id': seat.id}) }}" class="btn btn-primary mr-3">Modifier</a>
+                     {{ include('seats/_delete_form.html.twig') }}
+                </div>
+
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Pas d'info disponible </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

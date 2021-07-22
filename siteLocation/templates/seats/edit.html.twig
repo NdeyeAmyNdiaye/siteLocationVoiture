@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifer la place{% endblock %}
+
+{% block body %}
+<div class="container card mt-5">
+    <h1 class="text-center">Modifier le nombre de place</h1>
+    {{ include('seats/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+    <div class="row text-center">
+    <a href="{{ path('seats_index') }}" class="btn btn-primary  ">Retour à la liste</a>
+    </div>
+</div>
+{% endblock %}

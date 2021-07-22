@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier modele {% endblock %}
+
+{% block body %}
+<div class="container card mt-5">
+    <h1 class="text-center">Modifier une modéle</h1>
+    {{ include('model/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+    <div class="row text-center">
+    <a href="{{ path('model_index') }}" class="btn btn-primary ">Retour à la liste</a>
+    </div>
+</div>
+{% endblock %}
+
