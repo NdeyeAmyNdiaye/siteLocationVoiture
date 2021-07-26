@@ -50,6 +50,10 @@ class CarFleet
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->status;
+    }
 
     /**
      * @return Collection|Cars[]

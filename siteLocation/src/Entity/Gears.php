@@ -50,6 +50,10 @@ class Gears
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->gear;
+    }
 
     /**
      * @return Collection|Cars[]

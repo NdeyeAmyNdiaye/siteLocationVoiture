@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gears index{% endblock %}
+
+{% block body %}
+    <h1>Gears index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Gear</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gear in gears %}
+            <tr>
+                <td>{{ gear.id }}</td>
+                <td>{{ gear.gear }}</td>
+                <td>
+                    <a href="{{ path('gears_show', {'id': gear.id}) }}">show</a>
+                    <a href="{{ path('gears_edit', {'id': gear.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('gears_new') }}">Create new</a>
+{% endblock %}

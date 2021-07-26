@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Engines{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une motorisation</h1>
+
+    {{ include('engines/_form.html.twig') }}
+
+    <a href="{{ path('engines_index') }}">Retour à la liste</a>
+{% endblock %}

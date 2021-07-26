@@ -1,0 +1,52 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title %} Dashboad {% endblock %}
+
+{% block content %}
+    <div class="content">
+
+        <div class="container">
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">{{ 'Details de loca-auto'|trans }}</a>
+                </li>
+                <li class="breadcrumb-item active">{{ app.user.username }} </li>
+            </ol>
+            <!-- Icon Cards-->
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <h1> Tableau de bord </h1>
+            </div>
+            <div class="row mt-3">
+                <div class="col-6 alert-success">
+                     <span class="display-3"> {{ countUser['value'] }} </span> Utilisateurs 
+                </div>
+                <div class="col-6 alert-dark">
+                     <span class="display-3"> {{ countCars['value'] }}</span> voitures dans le parc 
+                </div>
+            </div>
+              <div class="row mt-5">
+                <div class="col-12">
+                    <h3> Liste des voitures</h3>
+
+                    <ul class="list-group">
+                         {% for car in CarsList %} 
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="display-5">
+                                <i class="fa fa-car"></i>
+                                 {{ car.brand.brand }} 
+                            </span>
+                            <span class="badge badge-pill">
+                                 <img class="img-thumbnail" src="../build/upload/images/cars/{{car.image}}" style="width: 150px;"> 
+                            </span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </di
+        </div>
+    </div>
+{% endblock content %}

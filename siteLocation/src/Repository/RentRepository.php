@@ -19,6 +19,19 @@ class RentRepository extends ServiceEntityRepository
         parent::__construct($registry, Rent::class);
     }
 
+
+    /**
+     * @return int|mixed|string|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function countAllRents()
+    {
+        $queryBuilder = $this->createQueryBuilder('a');
+        $queryBuilder->select('COUNT(a.id) as value');
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
+
     // /**
     //  * @return Rent[] Returns an array of Rent objects
     //  */

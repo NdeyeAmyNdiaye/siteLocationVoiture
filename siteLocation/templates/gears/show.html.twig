@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gears{% endblock %}
+
+{% block body %}
+    <h1>Gears</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gear.id }}</td>
+            </tr>
+            <tr>
+                <th>Gear</th>
+                <td>{{ gear.gear }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('gears_index') }}">back to list</a>
+
+    <a href="{{ path('gears_edit', {'id': gear.id}) }}">edit</a>
+
+    {{ include('gears/_delete_form.html.twig') }}
+{% endblock %}

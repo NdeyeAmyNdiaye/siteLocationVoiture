@@ -50,6 +50,10 @@ class Seats
 
         return $this;
     }
+    public function __toString()
+    {
+        return strval($this->seat);
+    }
 
     /**
      * @return Collection|Cars[]

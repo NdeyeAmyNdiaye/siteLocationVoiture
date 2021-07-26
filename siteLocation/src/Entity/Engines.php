@@ -25,7 +25,7 @@ class Engines
     private $engine;
 
     /**
-     * @ORM\OneToMany(targetEntity=cars::class, mappedBy="engine")
+     * @ORM\OneToMany(targetEntity=Cars::class, mappedBy="engine")
      */
     private $cars;
 
@@ -49,6 +49,10 @@ class Engines
         $this->engine = $engine;
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->engine;
     }
 
     /**

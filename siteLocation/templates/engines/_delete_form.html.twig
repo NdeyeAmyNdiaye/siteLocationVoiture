@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('engines_delete', {'id': engine.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir supprimer cette motorisation');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ engine.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>

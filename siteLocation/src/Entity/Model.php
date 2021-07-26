@@ -51,6 +51,10 @@ class Model
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->model;
+    }
 
     /**
      * @return Collection|Cars[]

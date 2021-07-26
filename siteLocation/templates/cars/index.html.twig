@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cars index{% endblock %}
+
+{% block body %}
+<div class="container card mt-5">
+    <h1>Cars index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                 <th>Numero Immatriculation</th>
+                 <th> Marque </th>
+                 <th> Modéle </th>
+                 <th> Motorisation </th>
+                 <th> Boite de vitesse </th>
+                <th>prix</th>
+                <th>Disponibilité</th>
+               
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for car in cars %}
+            <tr>
+                <td>{{ car.id }}</td>
+                <td>{{ car.plate }}</td>
+                 <td>{{ car.brand.brand }}</td>
+                 <td>{{ car.model.model }}</td>
+                <td>{{ car.engine.engine }}</td>
+                <td>{{ car.gear.gear }}</td>
+                <td>{{ car.price }}</td>
+                <td>{{ car.availability ? 'OUI' : 'Non' }}</td>
+                
+                <td>
+                    <a href="{{ path('cars_show', {'id': car.id}) }}">show</a>
+                    <a href="{{ path('cars_edit', {'id': car.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cars_new') }}">Create new</a>
+    <div>
+{% endblock %}

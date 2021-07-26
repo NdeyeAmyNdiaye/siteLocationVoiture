@@ -18,6 +18,17 @@ class CarsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Cars::class);
     }
+    /**
+     * @return int|mixed|string|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function countAllCars()
+    {
+        $queryBuilder = $this->createQueryBuilder('a');
+        $queryBuilder->select('COUNT(a.id) as value');
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
 
     // /**
     //  * @return Cars[] Returns an array of Cars objects

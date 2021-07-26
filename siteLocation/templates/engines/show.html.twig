@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Motorisation{% endblock %}
+
+{% block body %}
+    <h1>Motorisation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ engine.id }}</td>
+            </tr>
+            <tr>
+                <th>Engine</th>
+                <td>{{ engine.engine }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('engines_index') }}">Retour à la liste</a>
+
+    <a href="{{ path('engines_edit', {'id': engine.id}) }}">Modifier</a>
+
+    {{ include('engines/_delete_form.html.twig') }}
+{% endblock %}

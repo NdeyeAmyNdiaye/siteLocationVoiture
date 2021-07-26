@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Gears{% endblock %}
+
+{% block body %}
+    <h1>Edit Gears</h1>
+
+    {{ include('gears/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('gears_index') }}">back to list</a>
+
+    {{ include('gears/_delete_form.html.twig') }}
+{% endblock %}
